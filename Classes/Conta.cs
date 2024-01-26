@@ -10,7 +10,13 @@ namespace banco_rambank.Classes
         public int AccountNumber { get; set; }
         protected decimal Saldo = 3000;
         private string Password { get; set; }
-        public Titular titular = new Titular();
+
+        private List<Titular> titulares = new List<Titular>();
+
+        public void AdicionarTitular(Titular titular)
+        {
+            titulares.Add(titular);
+        }
 
         public void CreatePassword (string password)
         {
@@ -21,7 +27,10 @@ namespace banco_rambank.Classes
         public void ExibirInformacoes()
         {
             Console.WriteLine("Bem-vindo à área do cliente da RamBank.");
-            Console.WriteLine($"Titular: {titular.Nome}");
+            foreach (var titular in titulares)
+            {
+                Console.WriteLine($"Titular: {titular.Nome}");
+            }
             Console.WriteLine($"Número da conta: {AccountNumber}");
             Console.WriteLine($"Saldo: {Saldo}");
         }
