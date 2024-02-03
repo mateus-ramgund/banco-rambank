@@ -7,33 +7,24 @@ namespace banco_rambank.Classes
 {
     public class Conta
     {
-        public int AccountNumber { get; set; }
-        protected decimal Saldo = 3000;
-        private string Password { get; set; }
-
-        private List<Titular> titulares = new List<Titular>();
-
-        public void AdicionarTitular(Titular titular)
+        public Conta(Titular titular, int agencia, int accountnumber, double saldo, double limite)
         {
-            titulares.Add(titular);
+            Titular = titular;
+            Agencia = agencia;
+            NumeroDaConta = accountnumber;
+            Saldo = saldo;
+            Limite = limite;
         }
 
-        public void CreatePassword (string password)
-        {
-            Password = password;
-        }
+        
+        public Titular Titular {get; set;}
+        public int Agencia {get; set;}
+        public int NumeroDaConta {get; set;}
+        public double Saldo {get;}
+        public double Limite {get; set;}
 
+        public string Informacoes => $"Conta nº {this.NumeroDaConta}, Agência {this.Agencia}, Titular: {this.Titular.Nome} - Saldo: {this.Saldo}";
 
-        public void ExibirInformacoes()
-        {
-            Console.WriteLine("Bem-vindo à área do cliente da RamBank.");
-            foreach (var titular in titulares)
-            {
-                Console.WriteLine($"Titular: {titular.Nome}");
-            }
-            Console.WriteLine($"Número da conta: {AccountNumber}");
-            Console.WriteLine($"Saldo: {Saldo}");
-        }
 
         
     }
