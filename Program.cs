@@ -1,12 +1,7 @@
 using banco_rambank.Classes;
 
-Titular matt = new Titular();
-matt.Nome = "Mateus Ramgund";
+Titular matt = new Titular("Mateus Ramgund", "99999999999", "Rua Doze de Dezembro, PE");
 
-Conta mateus = new Conta();
-mateus.AccountNumber = 123456;
-mateus.CreatePassword("mateus123");
+Conta mateus = new Conta(matt, 123456, 123456, 3000, 6000);
 
-mateus.AdicionarTitular(matt);
-
-mateus.ExibirInformacoes();
+Console.WriteLine(mateus.Informacoes);
